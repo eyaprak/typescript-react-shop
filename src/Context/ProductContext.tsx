@@ -16,7 +16,6 @@ export const ProductContext = createContext<InitialStateType>(initialState);
 const ProductContextProvider = ({ children }: AppType) => {
   const [state, setState] = useState<InitialStateType>(initialState);
   const getProducts = async () => {
-    setState({ ...state, loading: true });
     await axios
       .get<ProductType[]>('https://fakestoreapi.com/products?limit=8')
       .then((res) => {
@@ -30,6 +29,8 @@ const ProductContextProvider = ({ children }: AppType) => {
   };
 
   const getProduct = async (id: string) => {
+    setState({ ...state, loading: true });
+
     await axios
       .get<ProductType>('https://fakestoreapi.com/products/' + id)
       .then((res) => {
