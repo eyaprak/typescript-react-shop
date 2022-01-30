@@ -10,6 +10,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { DrawerContext } from '../../Context/DrawerContext';
 import { Link } from 'react-router-dom';
 import { Container } from '../../App.styles';
+import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+
 type Props = {
   product: ProductType;
 };
@@ -46,6 +48,7 @@ const Product: React.FC<Props> = ({ product }) => {
             });
           }}
         >
+          <ShoppingBasketIcon style={{ paddingRight: '5px' }} />
           Add To Cart
         </Button>
       </Wrapper>

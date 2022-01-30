@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Button from '@material-ui/core/Button';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -101,6 +102,16 @@ export const ButtonWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 15px;
+`;
+
+export const StyledButton = styled(Button)`
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+  span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
 `;
 
 /*${({ theme }) => theme.colors.primaryColor};*/

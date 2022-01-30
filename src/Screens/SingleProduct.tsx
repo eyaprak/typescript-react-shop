@@ -10,6 +10,7 @@ import {
   StyledPrice,
   StyledQuantity,
   ButtonWrapper,
+  StyledButton,
 } from './SingleProduct.styles';
 import { CartContext } from '../Context/CartContext';
 import { toast } from 'react-toastify';
@@ -18,6 +19,9 @@ import { DrawerContext } from '../Context/DrawerContext';
 import BreadCrumbs from '../Components/Breadcrumbs/Breadcrumbs';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import LocalMallIcon from '@material-ui/icons/LocalMall';
+
 const SingleProduct = () => {
   let { currentProduct, getProduct, loading } = useContext(ProductContext);
   const { id } = useParams();
@@ -106,7 +110,8 @@ const SingleProduct = () => {
               </StyledQuantity>
             </StyledPrice>
             <ButtonWrapper>
-              <Button
+              <StyledButton
+                size='large'
                 variant='contained'
                 color='primary'
                 onClick={() => {
@@ -127,11 +132,12 @@ const SingleProduct = () => {
                   }
                 }}
               >
-                Add To Cart
-              </Button>
-              <Button variant='contained' color='secondary'>
-                Buy Now
-              </Button>
+                <ShoppingBasketIcon /> Add To Cart
+              </StyledButton>
+              <StyledButton variant='contained' color='secondary' size='large'>
+                <LocalMallIcon />
+                <span>Buy Now</span>
+              </StyledButton>
             </ButtonWrapper>
           </RightSide>
         </Wrapper>
