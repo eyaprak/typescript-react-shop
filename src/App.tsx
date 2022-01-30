@@ -1,25 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+//React Router Dom
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+//Components
+import HomePage from './Screens/HomePage';
+import SingleProduct from './Screens/SingleProduct';
+import Appbar from './Components/Appbar/Appbar';
+import { ToastContainer } from 'react-toastify';
+import { Container } from '@material-ui/core';
+import Drawer from './Components/Drawer/Drawer';
+import { ThemeProvider, createTheme } from '@material-ui/core/styles';
 
 function App() {
+  const theme = {
+    colors: {
+      primaryColor: '#714aff',
+      textColor: '#252b3a',
+      btnHoverColor: '#4f1fff',
+    },
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Appbar />
+        <Drawer />
+        <Container>
+          <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='product/:id' element={<SingleProduct />} />
+          </Routes>
+        </Container>
+      </Router>
+      <ToastContainer />
+    </>
   );
 }
 
