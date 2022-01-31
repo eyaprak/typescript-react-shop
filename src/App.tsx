@@ -2,21 +2,15 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 //Components
 import HomePage from './Screens/HomePage';
-import SingleProduct from './Screens/SingleProduct';
+import SingleProductPage from './Screens/SingleProductPage';
 import Appbar from './Components/Appbar/Appbar';
 import { ToastContainer } from 'react-toastify';
 import { Container } from '@material-ui/core';
 import Drawer from './Components/Drawer/Drawer';
-import { ThemeProvider, createTheme } from '@material-ui/core/styles';
+import Footer from './Components/Footer/Footer';
+import CheckoutPage from './Screens/CheckoutPage';
 
 function App() {
-  const theme = {
-    colors: {
-      primaryColor: '#714aff',
-      textColor: '#252b3a',
-      btnHoverColor: '#4f1fff',
-    },
-  };
   return (
     <>
       <Router>
@@ -25,10 +19,12 @@ function App() {
         <Container>
           <Routes>
             <Route path='/' element={<HomePage />} />
-            <Route path='product/:id' element={<SingleProduct />} />
+            <Route path='product/:id' element={<SingleProductPage />} />
+            <Route path='checkout' element={<CheckoutPage />} />
           </Routes>
         </Container>
       </Router>
+      {/*<Footer />*/}
       <ToastContainer />
     </>
   );

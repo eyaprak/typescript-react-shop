@@ -11,7 +11,7 @@ import {
   StyledQuantity,
   ButtonWrapper,
   StyledButton,
-} from './SingleProduct.styles';
+} from './SingleProductPage.styles';
 import { CartContext } from '../Context/CartContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

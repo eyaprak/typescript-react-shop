@@ -3,7 +3,7 @@ import Box from '@material-ui/core/Container';
 import { useContext } from 'react';
 import { DrawerContext } from '../../Context/DrawerContext';
 import { StyledBox } from './Buttons.styled';
-
+import { Link } from 'react-router-dom';
 type ButtonsProps = {
   totalPrice: number;
 };
@@ -14,9 +14,20 @@ const Buttons: React.FC<ButtonsProps> = ({ totalPrice }) => {
   return (
     <>
       <StyledBox>
-        <Button variant='contained' color='secondary' fullWidth>
-          Checkout (${totalPrice.toFixed(2)})
-        </Button>
+        <Link to='/checkout'>
+          <Button
+            variant='contained'
+            color='secondary'
+            fullWidth
+            onClick={() => {
+              if (setDrawer) {
+                setDrawer(false);
+              }
+            }}
+          >
+            Checkout (${totalPrice.toFixed(2)})
+          </Button>
+        </Link>
         <Button
           variant='outlined'
           color='primary'

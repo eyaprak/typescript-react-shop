@@ -34,9 +34,11 @@ export const RightSide = styled.div`
     margin-top: 0px;
     font-family: 'Lato', sans-serif;
     position: relative;
+    color: #333;
   }
   .productDescription {
     font-family: 'Alegreya Sans', sans-serif;
+    color: #555;
   }
   .productTitle::after {
     content: '';
@@ -50,13 +52,20 @@ export const RightSide = styled.div`
   }
 `;
 
-export const StyledPrice = styled.div`
+type PriceProps = {
+  fontSize?: string;
+  alignItems?: string;
+};
+
+export const StyledPrice = styled.div<PriceProps>`
   .productPrice {
-    font-size: 30px;
+    font-size: ${({ fontSize }) => (!fontSize ? '30px' : fontSize + 'px')};
     display: flex;
     align-items: center;
     font-family: 'Lato', sans-serif;
     font-weight: 500;
+    color: #333;
+    justify-content: ${({ alignItems }) => (!alignItems ? 'left' : alignItems)};
     .productRealPrice {
       font-size: 20px !important;
       color: #f50057;
@@ -70,6 +79,7 @@ export const StyledQuantity = styled.div`
   display: flex;
   font-size: 20px;
   margin: 30px 0;
+  color: #333;
   .flex {
     display: flex;
     align-items: center;
