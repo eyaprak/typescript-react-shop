@@ -1,7 +1,7 @@
 import { ProductContext } from '../Context/ProductContext';
 import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Button, CircularProgress, Grid, IconButton } from '@material-ui/core';
+import { useParams, useNavigate } from 'react-router-dom';
+import { CircularProgress, IconButton } from '@material-ui/core';
 import { Container } from '../App.styles';
 import {
   Wrapper,
@@ -28,6 +28,7 @@ const SingleProduct = () => {
   const { dispatch } = useContext(CartContext);
   const { setDrawer } = useContext(DrawerContext);
   const [quantity, setQuantity] = useState(1);
+  const navigate = useNavigate();
 
   const handleIncreaseQuantity = () => {
     setQuantity((prev) => {
@@ -134,7 +135,28 @@ const SingleProduct = () => {
               >
                 <ShoppingBasketIcon /> Add To Cart
               </StyledButton>
-              <StyledButton variant='contained' color='secondary' size='large'>
+              <StyledButton
+                variant='contained'
+                color='secondary'
+                size='large'
+                onClick={() => {
+                  if (dispatch) {
+                    dispatch({
+                      type: 'ADD_TO_CART',
+                      payload: { product: currentProduct, quantity: quantity },
+                    });
+                  }
+                  toast.success('Item added to the cart!', {
+                    position: 'top-center',
+                    onClick: () => {
+                      if (setDrawer) {
+                        setDrawer(true);
+                      }
+                    },
+                  });
+                  navigate('/checkout');
+                }}
+              >
                 <LocalMallIcon />
                 <span>Buy Now</span>
               </StyledButton>
